@@ -12,18 +12,18 @@ jobs:
         uses: dante-ev/latex-action@master
         with:
           working_directory: src
-          root_file: ScalaSandbox.tex
+          root_file: ScalaSandBox.tex
           args: -pdf -output-directory=../out -interaction=nonstopmode -synctex=1
       - name: Check pdf files
         run: |
-          file out/ScalaSandbox.pdf | grep -q ' PDF '
+          file out/ScalaSandBox.pdf | grep -q ' PDF '
       - name: Upload Scala Sandbox PDF
         uses: actions/upload-artifact@master
         with:
           name: lecture
-          path: out/ScalaSandbox.pdf
+          path: out/ScalaSandBox.pdf
       - name: Upload Scala Sandbox
         uses: actions/upload-artifact@master
         with:
           name: lecture
-          path: out/ScalaSandbox.pdf
+          path: out/ScalaSandBox.pdf
