@@ -1,0 +1,9 @@
+image: aergus/latex
+
+build:
+  script:
+    - cd src
+    - latexmk -pdf ScalaSandbox.tex  -output-directory=../out -interaction=nonstopmode -synctex=1
+  artifacts:
+    paths:
+      - "./out/ScalaSandbox.pdf"

@@ -1,0 +1,140 @@
+%! Author = ahmedhassanien
+%! Date = 5/2/20
+
+% Preamble
+\documentclass[
+% handout, % Comment to release the presentation
+    aspectratio=1610
+]{beamer}
+
+\usetheme[width=2cm]{Hannover}
+
+% Packages
+\usepackage[]{theme/beamercolorthemeowl}
+\usepackage{fontawesome}
+
+\title[Scala Sandbox]{Scala Sandbox}
+\subtitle{\textit{Scala SDLC and template}}
+\input{common/front_page}
+
+% Document
+\begin{document}
+
+    \maketitle
+
+%----------------------------------------------------------------------------------------------------------------------%
+
+
+    \section{Introduction}\label{sec:introduction}
+%----------------------------------------------------------------------------------------------------------------------%
+
+    \subsection{Goals}\label{subsec:goals}
+    \begin{frame}{Scala Sandbox Goals}
+        \begin{itemize}[<+- | alert@+>]
+            \item Create Scala SDLC.
+            \item Simplify Scala project bootstrapping.
+            \item Releasing strategy.
+        \end{itemize}
+    \end{frame}
+
+    \subsection{Notes}\label{subsec:notes}
+    \begin{frame}{Notes}
+        \begin{itemize}[<+- | alert@+>]
+            \item Maven is an example of a build management tool.
+            A similar SDLC is achievable by using other means.
+            \item Scala is an example, and we don't expect anyone to be a Scala expert for following this session.
+            We are writing simple functions for the demo.
+            \item We do bugs to show you the detailed steps to build the project, but we will fix it together
+            \item This video focuses on local settings.
+            In the next videos, we will show how to configure release this project using the CICD automated process with different tools.
+        \end{itemize}
+    \end{frame}
+
+    \subsection{Final Takeaways}\label{subsec:final-takeaways}
+    \begin{frame}{Notes}
+        \begin{itemize}[<+- | alert@+>]
+            \item Get your laptop ready with us, pause, and continue following every line.
+            \item You need Java (8), and Maven (3.6.x) installed locally.
+            \item Check our GitHub repo and articles for more detail.
+            \item Ask and share your question on our website.
+            \item Please share with us your future expectations about this series.
+        \end{itemize}
+    \end{frame}
+
+
+%----------------------------------------------------------------------------------------------------------------------%
+
+
+    \section{Outline}\label{sec:outline}
+%----------------------------------------------------------------------------------------------------------------------%
+
+    \begin{frame}{Outline}
+        \begin{itemize}[<+- | alert@+>]
+            \item Create Scala maven project.
+            \item Add Scala static analysis tools.
+            \item Add maven site reporting for visualizing your checks.
+            \item Eliminate maven boilerplate.
+            \item Maven release strategy.
+            \item Enable GitHub Actions for Scala maven repository.
+        \end{itemize}
+    \end{frame}
+
+    \subsection{Scala maven project}\label{subsec:scala-maven-project}
+    \begin{frame}{Create Scala maven project}
+        \begin{itemize}[<+- | alert@+>]
+            \item Create project skeleton.
+            \item Add sample Scala Class.
+            \item Configure maven to compile Scala sources.
+            \item Add sample Scala Test.
+            \item Configure maven to run Scala test.
+            \item Configure maven to avoid compiling java classes and test classes.
+        \end{itemize}
+    \end{frame}
+
+    \subsection{Static analysis tools}\label{subsec:static-analysis-tools}
+    \begin{frame}{Scala static analysis tools}
+        \begin{itemize}[<+- | alert@+>]
+            \item Add Scala code coverage tool.
+            \item Solve the test running twice issue.
+            \item Add Scala style tool.
+            \item Add FindBugs tool.
+        \end{itemize}
+    \end{frame}
+
+    \subsection{Maven Site Reporting}\label{subsec:maven-site-reporting}
+    \begin{frame}{Maven Site Reporting}
+        \begin{itemize}[<+- | alert@+>]
+            \item Add Scala Coverage report.
+            \item Add FindBugs report.
+            \item Add Scala docs report.
+        \end{itemize}
+    \end{frame}
+
+    \subsection{Eliminate boilerplate}\label{subsec:eliminate-boilerplate}
+    \begin{frame}{Eliminate maven boilerplate}
+        \begin{itemize}[<+- | alert@+>]
+            \item Clean the Scala maven project and use maven BOM and Scala profile.
+            \item Add SCM tag to maven (Scala maven project).
+        \end{itemize}
+    \end{frame}
+
+    \subsection{Maven release strategy}\label{subsec:maven-release-strategy}
+    \begin{frame}{Maven release strategy}
+        \begin{itemize}[<+- | alert@+>]
+            \item Add distribution management tag (Scala maven project).
+            \item Create settings.xml to set repository server credentials (Github repository/package).
+            \item Add maven release plugin.
+            \item Release out first version.
+        \end{itemize}
+    \end{frame}
+
+    \subsection{GitHub Actions}\label{subsec:github-actions}
+    \begin{frame}{GitHub Actions}
+        \begin{itemize}[<+- | alert@+>]
+            \item Add new GitHub/Workflow/build.yml for Build, Test and Report.
+            \item Add deployment with each develop push.
+            \item Add release with each master push (Merge request from develop to master).
+        \end{itemize}
+    \end{frame}
+
+\end{document}
