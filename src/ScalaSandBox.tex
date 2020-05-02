@@ -12,13 +12,14 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric}
 \usetikzlibrary{arrows.meta,arrows}
-\usepackage{smartdiagram}\usesmartdiagramlibrary{additions}
 
-
+\tikzset{
+    invisible/.style = {opacity=0},
+    visible on/.style = {alt={#1{}{invisible}}},
+    alt/.code args = {<#1>#2#3}{\alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}} % \pgfkeysalso doesn't change the path.\input{common/front_page}
+}
 \title[Scala Sandbox]{Scala Sandbox}
 \subtitle{\textit{Scala SDLC and template}}
-\input{common/front_page}
-
 % Document
 \begin{document}
 
@@ -72,24 +73,24 @@
 
     \begin{frame}
         \begin{figure}
-        \tikzstyle{block} = [rectangle, draw, fill=orange!60!yellow, text width=3cm,minimum height=1em,
+        \tikzstyle{block} = [rectangle, draw, fill=yellow!90, text width=3cm,minimum height=1em,
         inner sep=0pt,
         text centered, minimum height=1cm,font=\bfseries]
 
         \begin{tikzpicture}[node distance = 4cm, auto,>=stealth']
 
-        \node [block] (b) {Create Scala mvn Proj};
-        \node [block, right of=b] (c) {Scala static analysis tools};
-        \node [block, right of=c] (d) {Add mvn site reporting};
-        \node [block, below of=d] (e) {Eliminate boilerplate};
-        \node [block, left of=e] (f) {Mvn release strategy};
-        \node [block, left of=f] (g) {GitHub actions};
+        \node [block, visible on=<1->] (b) {Create Scala mvn Proj};
+        \node [block, right of=b, visible on=<2->] (c) {Add static analysis tools};
+        \node [block, right of=c, visible on=<3->] (d) {Add mvn site reporting};
+        \node [block, below of=d, visible on=<4->] (e) {Eliminate boilerplate};
+        \node [block, left of=e, visible on=<5->] (f) {Mvn release strategy};
+        \node [block, left of=f, visible on=<6->] (g) {GitHub actions};
 
-        \draw [->] (b) -- (c);
-        \draw [->] (c) -- (d);
-        \draw [->] (d.south) -- (e.north);
-        \draw [->] (e) -- (f);
-        \draw [->] (f) -- (g);
+        \draw [->, visible on=<2->] (b) -- (c);
+        \draw [->, visible on=<3->] (c) -- (d);
+        \draw [->, visible on=<4->] (d.south) -- (e.north);
+        \draw [->, visible on=<5->] (e) -- (f);
+        \draw [->, visible on=<6->] (f) -- (g);
 
         \end{tikzpicture}
         \caption{Outline} \label{fig:M1}
@@ -108,32 +109,32 @@
     %\end{frame}
     %----------------------------------------------------------------------------------------------------------------------%
 
-    \begin{frame}
-        \begin{figure}
-            \tikzstyle{block} = [rectangle, draw, fill=green!60!yellow, text width=3cm,
-            minimum height=1em,
-            inner sep=0pt,
-            text centered, minimum size=1cm,font=\bfseries]
-
-            \begin{tikzpicture}[node distance = 4cm, auto,>=stealth']
-
-                \node [block] (b) {Create project skeleton};
-                \node [block, right of=b] (c) {Scala static analysis tools};
-                \node [block, right of=c] (d) {Compile Scala using mvn};
-                \node [block, below of=d] (e) {Add sample Scala Test};
-                \node [block, left of=e] (f) {Configure mvn to run Scala test};
-                \node [block, left of=f] (g) {Disable compile Java src/tests};
-
-                \draw [->] (b) -- (c);
-                \draw [->] (c) -- (d);
-                \draw [->] (d.south) -- (e.north);
-                \draw [->] (e) -- (f);
-                \draw [->] (f) -- (g);
-
-            \end{tikzpicture}
-            \caption{Scala maven project} \label{fig:M1}
-        \end{figure}
-    \end{frame}
+    %\begin{frame}
+    %    \begin{figure}
+    %        \tikzstyle{block} = [rectangle, draw, fill=green!60!yellow, text width=3cm,
+    %        minimum height=1em,
+    %        inner sep=0pt,
+    %        text centered, minimum size=1cm,font=\bfseries]
+    %
+    %        \begin{tikzpicture}[node distance = 4cm, auto,>=stealth']
+    %
+    %            \node [block] (b) {Create project skeleton};
+    %            \node [block, right of=b] (c) {Scala static analysis tools};
+    %            \node [block, right of=c] (d) {Compile Scala using mvn};
+    %            \node [block, below of=d] (e) {Add sample Scala Test};
+    %            \node [block, left of=e] (f) {Configure mvn to run Scala test};
+    %            \node [block, left of=f] (g) {Disable compile Java src/tests};
+    %
+    %            \draw [->] (b) -- (c);
+    %            \draw [->] (c) -- (d);
+    %            \draw [->] (d.south) -- (e.north);
+    %            \draw [->] (e) -- (f);
+    %            \draw [->] (f) -- (g);
+    %
+    %        \end{tikzpicture}
+    %        \caption{Scala maven project} \label{fig:M1}
+    %    \end{figure}
+    %\end{frame}
 %----------------------------------------------------------------------------------------------------------------------%
     \subsection{Scala maven project}\label{subsec:scala-maven-project}
     \begin{frame}{Create Scala maven project}
