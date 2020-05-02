@@ -2,16 +2,18 @@
 %! Date = 5/2/20
 
 % Preamble
-\documentclass[
-% handout, % Comment to release the presentation
-    aspectratio=1610
-]{beamer}
+\documentclass[aspectratio=169]{beamer}
 
 \usetheme[width=2cm]{Hannover}
 
 % Packages
 \usepackage[]{theme/beamercolorthemeowl}
 \usepackage{fontawesome}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{arrows.meta,arrows}
+\usepackage{smartdiagram}\usesmartdiagramlibrary{additions}
+
 
 \title[Scala Sandbox]{Scala Sandbox}
 \subtitle{\textit{Scala SDLC and template}}
@@ -68,17 +70,71 @@
     \section{Outline}\label{sec:outline}
 %----------------------------------------------------------------------------------------------------------------------%
 
-    \begin{frame}{Outline}
-        \begin{itemize}[<+- | alert@+>]
-            \item Create Scala maven project.
-            \item Add Scala static analysis tools.
-            \item Add maven site reporting for visualizing your checks.
-            \item Eliminate maven boilerplate.
-            \item Maven release strategy.
-            \item Enable GitHub Actions for Scala maven repository.
-        \end{itemize}
-    \end{frame}
+    \begin{frame}
+        \begin{figure}
+        \tikzstyle{block} = [rectangle, draw, fill=orange!60!yellow, text width=3cm,minimum height=1em,
+        inner sep=0pt,
+        text centered, minimum height=1cm,font=\bfseries]
 
+        \begin{tikzpicture}[node distance = 4cm, auto,>=stealth']
+
+        \node [block] (b) {Create Scala mvn Proj};
+        \node [block, right of=b] (c) {Scala static analysis tools};
+        \node [block, right of=c] (d) {Add mvn site reporting};
+        \node [block, below of=d] (e) {Eliminate boilerplate};
+        \node [block, left of=e] (f) {Mvn release strategy};
+        \node [block, left of=f] (g) {GitHub actions};
+
+        \draw [->] (b) -- (c);
+        \draw [->] (c) -- (d);
+        \draw [->] (d.south) -- (e.north);
+        \draw [->] (e) -- (f);
+        \draw [->] (f) -- (g);
+
+        \end{tikzpicture}
+        \caption{Outline} \label{fig:M1}
+        \end{figure}
+    \end{frame}
+%----------------------------------------------------------------------------------------------------------------------%
+    %\begin{frame}{Outline}
+    %    \begin{itemize}[<+- | alert@+>]
+    %        \item Create Scala maven project.
+    %        \item Add Scala static analysis tools.
+    %        \item Add maven site reporting for visualizing your checks.
+    %        \item Eliminate maven boilerplate.
+    %        \item Maven release strategy.
+    %        \item Enable GitHub Actions for Scala maven repository.
+    %    \end{itemize}
+    %\end{frame}
+    %----------------------------------------------------------------------------------------------------------------------%
+
+    \begin{frame}
+        \begin{figure}
+            \tikzstyle{block} = [rectangle, draw, fill=green!60!yellow, text width=3cm,
+            minimum height=1em,
+            inner sep=0pt,
+            text centered, minimum size=1cm,font=\bfseries]
+
+            \begin{tikzpicture}[node distance = 4cm, auto,>=stealth']
+
+                \node [block] (b) {Create project skeleton};
+                \node [block, right of=b] (c) {Scala static analysis tools};
+                \node [block, right of=c] (d) {Compile Scala using mvn};
+                \node [block, below of=d] (e) {Add sample Scala Test};
+                \node [block, left of=e] (f) {Configure mvn to run Scala test};
+                \node [block, left of=f] (g) {Disable compile Java src/tests};
+
+                \draw [->] (b) -- (c);
+                \draw [->] (c) -- (d);
+                \draw [->] (d.south) -- (e.north);
+                \draw [->] (e) -- (f);
+                \draw [->] (f) -- (g);
+
+            \end{tikzpicture}
+            \caption{Scala maven project} \label{fig:M1}
+        \end{figure}
+    \end{frame}
+%----------------------------------------------------------------------------------------------------------------------%
     \subsection{Scala maven project}\label{subsec:scala-maven-project}
     \begin{frame}{Create Scala maven project}
         \begin{itemize}[<+- | alert@+>]
